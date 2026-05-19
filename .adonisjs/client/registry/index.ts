@@ -6,29 +6,101 @@ import type { ApiDefinition } from './tree.d.ts'
 const placeholder: any = {}
 
 const routes = {
-  'auth.new_account.store': {
+  'access_tokens.store': {
     methods: ["POST"],
-    pattern: '/api/v1/auth/signup',
-    tokens: [{"old":"/api/v1/auth/signup","type":0,"val":"api","end":""},{"old":"/api/v1/auth/signup","type":0,"val":"v1","end":""},{"old":"/api/v1/auth/signup","type":0,"val":"auth","end":""},{"old":"/api/v1/auth/signup","type":0,"val":"signup","end":""}],
-    types: placeholder as Registry['auth.new_account.store']['types'],
+    pattern: '/session',
+    tokens: [{"old":"/session","type":0,"val":"session","end":""}],
+    types: placeholder as Registry['access_tokens.store']['types'],
   },
-  'auth.access_tokens.store': {
-    methods: ["POST"],
-    pattern: '/api/v1/auth/login',
-    tokens: [{"old":"/api/v1/auth/login","type":0,"val":"api","end":""},{"old":"/api/v1/auth/login","type":0,"val":"v1","end":""},{"old":"/api/v1/auth/login","type":0,"val":"auth","end":""},{"old":"/api/v1/auth/login","type":0,"val":"login","end":""}],
-    types: placeholder as Registry['auth.access_tokens.store']['types'],
+  'access_tokens.destroy': {
+    methods: ["DELETE"],
+    pattern: '/session',
+    tokens: [{"old":"/session","type":0,"val":"session","end":""}],
+    types: placeholder as Registry['access_tokens.destroy']['types'],
   },
-  'profile.profile.show': {
+  'user.index': {
     methods: ["GET","HEAD"],
-    pattern: '/api/v1/account/profile',
-    tokens: [{"old":"/api/v1/account/profile","type":0,"val":"api","end":""},{"old":"/api/v1/account/profile","type":0,"val":"v1","end":""},{"old":"/api/v1/account/profile","type":0,"val":"account","end":""},{"old":"/api/v1/account/profile","type":0,"val":"profile","end":""}],
-    types: placeholder as Registry['profile.profile.show']['types'],
+    pattern: '/user',
+    tokens: [{"old":"/user","type":0,"val":"user","end":""}],
+    types: placeholder as Registry['user.index']['types'],
   },
-  'profile.access_tokens.destroy': {
+  'user.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/user/create',
+    tokens: [{"old":"/user/create","type":0,"val":"user","end":""},{"old":"/user/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['user.create']['types'],
+  },
+  'user.store': {
     methods: ["POST"],
-    pattern: '/api/v1/account/logout',
-    tokens: [{"old":"/api/v1/account/logout","type":0,"val":"api","end":""},{"old":"/api/v1/account/logout","type":0,"val":"v1","end":""},{"old":"/api/v1/account/logout","type":0,"val":"account","end":""},{"old":"/api/v1/account/logout","type":0,"val":"logout","end":""}],
-    types: placeholder as Registry['profile.access_tokens.destroy']['types'],
+    pattern: '/user',
+    tokens: [{"old":"/user","type":0,"val":"user","end":""}],
+    types: placeholder as Registry['user.store']['types'],
+  },
+  'user.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/user/:id',
+    tokens: [{"old":"/user/:id","type":0,"val":"user","end":""},{"old":"/user/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['user.show']['types'],
+  },
+  'user.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/user/:id/edit',
+    tokens: [{"old":"/user/:id/edit","type":0,"val":"user","end":""},{"old":"/user/:id/edit","type":1,"val":"id","end":""},{"old":"/user/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['user.edit']['types'],
+  },
+  'user.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/user/:id',
+    tokens: [{"old":"/user/:id","type":0,"val":"user","end":""},{"old":"/user/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['user.update']['types'],
+  },
+  'user.destroy': {
+    methods: ["DELETE"],
+    pattern: '/user/:id',
+    tokens: [{"old":"/user/:id","type":0,"val":"user","end":""},{"old":"/user/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['user.destroy']['types'],
+  },
+  'books.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/books',
+    tokens: [{"old":"/books","type":0,"val":"books","end":""}],
+    types: placeholder as Registry['books.index']['types'],
+  },
+  'books.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/books/create',
+    tokens: [{"old":"/books/create","type":0,"val":"books","end":""},{"old":"/books/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['books.create']['types'],
+  },
+  'books.store': {
+    methods: ["POST"],
+    pattern: '/books',
+    tokens: [{"old":"/books","type":0,"val":"books","end":""}],
+    types: placeholder as Registry['books.store']['types'],
+  },
+  'books.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/books/:id',
+    tokens: [{"old":"/books/:id","type":0,"val":"books","end":""},{"old":"/books/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['books.show']['types'],
+  },
+  'books.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/books/:id/edit',
+    tokens: [{"old":"/books/:id/edit","type":0,"val":"books","end":""},{"old":"/books/:id/edit","type":1,"val":"id","end":""},{"old":"/books/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['books.edit']['types'],
+  },
+  'books.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/books/:id',
+    tokens: [{"old":"/books/:id","type":0,"val":"books","end":""},{"old":"/books/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['books.update']['types'],
+  },
+  'books.destroy': {
+    methods: ["DELETE"],
+    pattern: '/books/:id',
+    tokens: [{"old":"/books/:id","type":0,"val":"books","end":""},{"old":"/books/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['books.destroy']['types'],
   },
 } as const satisfies Record<string, AdonisEndpoint>
 
