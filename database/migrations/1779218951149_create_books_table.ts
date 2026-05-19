@@ -13,7 +13,7 @@ export default class extends BaseSchema {
       table.string('status').notNullable()
       table.text('observacoes')
       table
-        .integer('userId')
+        .integer('user_id')
         .unsigned()
         .notNullable()
         .references('id')
