@@ -32,9 +32,12 @@ export default class BooksController {
   /**
    * Show individual record
    */
-  async show({ params, response }: HttpContext) {
+  async show({ params, response, auth }: HttpContext) {
     try {
-      const book = await Book.findByOrFail('id', params.id)
+      const book = await Book.query()
+        .where('id', params.id)
+        .where('user_id', auth.user!.id)
+        .firstOrFail()
       return book
     } catch (error) {
       return response.status(404).json('Book not found')
@@ -44,9 +47,12 @@ export default class BooksController {
   /**
    * Handle form submission for the edit action
    */
-  async update({ params, request, response }: HttpContext) {
+  async update({ params, request, response, auth }: HttpContext) {
     try {
-      const book = await Book.findByOrFail('id', params.id)
+      const book = await Book.query()
+        .where('id', params.id)
+        .where('user_id', auth.user!.id)
+        .firstOrFail()
       const { status, observacoes } = await request.validateUsing(updateBookValidator)
       book.merge({ status, observacoes })
       await book.save()
@@ -59,9 +65,12 @@ export default class BooksController {
   /**
    * Delete record
    */
-  async destroy({ params, response }: HttpContext) {
+  async destroy({ params, response, auth }: HttpContext) {
     try {
-      const book = await Book.findByOrFail('id', params.id)
+      const book = await Book.query()
+        .where('id', params.id)
+        .where('userId', auth.user!.id)
+        .firstOrFail()
       await book.delete()
       return response.status(203)
     } catch (error) {
