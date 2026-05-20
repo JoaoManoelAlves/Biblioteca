@@ -9,7 +9,7 @@ export default class extends BaseSchema {
       table.string('titulo').notNullable()
       table.string('autor')
       table.string('genero').notNullable()
-      table.date('anoPublicacao')
+      table.date('ano_publicacao')
       table.string('status').notNullable()
       table.text('observacoes')
       table

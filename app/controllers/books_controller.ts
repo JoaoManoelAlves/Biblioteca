@@ -18,13 +18,14 @@ export default class BooksController {
     const { titulo, autor, genero, anoPublicacao, status, observacoes } =
       await request.validateUsing(createBookValidator)
     const book = await auth.user?.related('books').create({
-      titulo,
-      autor,
-      genero,
-      anoPublicacao,
-      status,
-      observacoes,
+      titulo: titulo,
+      autor: autor,
+      genero: genero,
+      anoPublicacao: anoPublicacao,
+      status: status,
+      observacoes: observacoes,
     })
+    console.log(book)
     return book
   }
 
